@@ -14,9 +14,10 @@ let form = document.querySelector("form");
 
 form.addEventListener("submit", implementSignup)
 
-
+let count = 0
+let submittedDataArray = []
 function implementSignup(event) {
-    event.preventDefault();
+    event.preventDefault(); // prevent any default behaviour
 
     let name = name_box.value;
     let email = email_box.value;
@@ -40,7 +41,47 @@ function implementSignup(event) {
     }
 
     // display the infomration
-    output.innerHTML = `Name: ${name} <br> Email: ${email} <br> Password: ${password}`;
+    // output.innerHTML =  output.innerHTML + ` <br> Name: ${name} <br> Email: ${email} <br> Password: ${password}`;
+
+    // let str = "jbckjs"
+    // str = str + newStr
+
+    // finalStr = data1 + data2 + data3 + data4
+
+    // add data to array: 
+    // let submitedDataObj = {}
+    submittedDataArray.push({name, email, password})
+
+    // submittedDataArray.push({name:name, email:email, password:password})
+
+
+    console.log(submittedDataArray);
+
+
+    // create div dynamically:
+
+    let submittedData = document.createElement("div");
+    submittedData.className = "submitted-data";
+    submittedData.id = `submitted-data-${++count}`;
+
+    submittedData.innerHTML = ` Name: ${name} <br> Email: ${email} <br> Password: ${password}`;
+
+    output.append(submittedData);
+
+
+
+
+
+
+
+
+
+
+    // clear the form
+    name_box.value = "";
+    email_box.value = "";
+    password_box.value = "";
+    confirm_password_box.value = "";
 
 }
 
